@@ -71,6 +71,8 @@ MONTH_SEASONALITY = {
 
 CANCEL_RATE = 0.015
 
+STUCK_IN_TRANSIT_RATE = 0.008  # ~0.8% of otherwise-completed shipments go "stuck" — overdue, still open
+
 # --- Fiscal quarter-end crunch (fiscal year starts November) ---
 # Quarters close end of Jan / Apr / Jul / Oct. The last stretch before each
 # close sees a volume spike and worse on-time performance as everyone
@@ -141,10 +143,12 @@ for i in range(NUM_SHIPMENTS):
         status = "In Transit"
         delivery_date = None
         delay_reason = None
-    elif random.random() < CANCEL_RATE:
-        status = "Cancelled"
+     elif random.random() < STUCK_IN_TRANSIT_RATE:
+        # "lost" in transit — already overdue, still unresolved
+        status = "In Transit"
         delivery_date = None
         delay_reason = None
+    elif random.random() < CANCEL_RATE:
     else:
         effective_on_time_rate = CARRIER_ON_TIME_RATE[carrier_name]
         if in_crunch:
