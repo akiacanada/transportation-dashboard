@@ -72,6 +72,7 @@ MONTH_SEASONALITY = {
 CANCEL_RATE = 0.015
 
 STUCK_IN_TRANSIT_RATE = 0.008  # ~0.8% of otherwise-completed shipments go "stuck" — overdue, still open
+STUCK_WINDOW_DAYS = 45         # only recent pickups can plausibly still be an unresolved open problem
 
 # --- Fiscal quarter-end crunch (fiscal year starts November) ---
 # Quarters close end of Jan / Apr / Jul / Oct. The last stretch before each
@@ -138,17 +139,21 @@ for i in range(NUM_SHIPMENTS):
     weight_lbs = round(random.uniform(w_lo, w_hi), 1)
     freight_cost = round(random.uniform(c_lo, c_hi), 2)
 
+
     if promised_delivery_date > DATA_END:
         # picked up too recently to have arrived yet
         status = "In Transit"
         delivery_date = None
         delay_reason = None
-     elif random.random() < STUCK_IN_TRANSIT_RATE:
+    elif (DATA_END - pickup_date).days <= STUCK_WINDOW_DAYS and random.random() < STUCK_IN_TRANSIT_RATE:
         # "lost" in transit — already overdue, still unresolved
         status = "In Transit"
         delivery_date = None
         delay_reason = None
     elif random.random() < CANCEL_RATE:
+        status = "Cancelled"
+        delivery_date = None
+        delay_reason = None
     else:
         effective_on_time_rate = CARRIER_ON_TIME_RATE[carrier_name]
         if in_crunch:
@@ -182,7 +187,7 @@ for i in range(NUM_SHIPMENTS):
 cursor.executemany("""
     INSERT INTO shipments
     (lane_id, carrier_id, shipment_mode, pickup_date, promised_delivery_date,
-     delivery_date, weight_lbs, freight_cost, shipment_status, delay_reason)
+    delivery_date, weight_lbs, freight_cost, shipment_status, delay_reason)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 """, rows)
 
