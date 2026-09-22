@@ -1,0 +1,9 @@
+carrier_id,carrier_name,carrier_type,region
+1,FedEx Freight,LTL,National
+2,UPS Supply Chain,Parcel,National
+3,DHL,International Air,Global
+4,XPO Logistics,LTL,National
+5,Estes,LTL,National
+6,Old Dominion,LTL,National
+7,Saia,LTL,Regional
+8,TForce Freight,LTL,National

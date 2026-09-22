@@ -1,0 +1,17 @@
+lane_id,origin_warehouse,origin_city,origin_state,inland_hub_airport,connection_airport,destination_airport,destination_city,destination_country,lane_type,standard_transit_days
+1,WH01,Austin,TX,,,DAL,Dallas,USA,Domestic Truck,1
+2,WH01,Austin,TX,,,HOU,Houston,USA,Domestic Truck,1
+3,WH01,Austin,TX,,,RDU,Raleigh,USA,Domestic Truck,4
+4,WH02,Phoenix,AZ,,,PHX,Tucson,USA,Domestic Truck,1
+5,WH03,San Jose,CA,,,SMF,Sacramento,USA,Domestic Truck,1
+6,WH04,Portland,OR,,,SEA,Seattle,USA,Domestic Truck,1
+7,WH05,Raleigh,NC,,,CLT,Charlotte,USA,Domestic Truck,1
+8,WH03,San Jose,CA,,,RDU,Raleigh,USA,Domestic Truck,7
+9,WH02,Phoenix,AZ,,,PDX,Portland,USA,Domestic Truck,3
+10,WH01,Austin,TX,IAH,,NRT,Tokyo,Japan,International Air,4
+11,WH01,Austin,TX,IAH,FRA,SIN,Singapore,Singapore,International Air,6
+12,WH03,San Jose,CA,LAX,,TPE,Taipei,Taiwan,International Air,4
+13,WH03,San Jose,CA,LAX,,ICN,Seoul,South Korea,International Air,4
+14,WH02,Phoenix,AZ,LAX,,PVG,Shanghai,China,International Air,5
+15,WH05,Raleigh,NC,ORD,FRA,KUL,Kuala Lumpur,Malaysia,International Air,7
+16,WH04,Portland,OR,LAX,,PEN,Penang,Malaysia,International Air,6
