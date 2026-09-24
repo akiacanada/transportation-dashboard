@@ -8,7 +8,7 @@ How can logistics coordinators quickly identify late shipments, underperforming 
 
 ## Live dashboard
 
-**[View the interactive dashboard on Tableau Public →](TABLEAU_PUBLIC_LINK_HERE)**
+**[View the interactive dashboard on Tableau Public →](https://public.tableau.com/app/profile/akia.canada/viz/Transportationanalyticsdashboard/ExecutiveOverview)**
 
 ## Data model
 
